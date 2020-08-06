@@ -33,6 +33,12 @@ class SecondFragment : Fragment() {
             val name = it.getString("name")
             val age = it.getInt("age")
         }
+
+        arguments?.let {
+            val name = MainFragmentArgs.fromBundle(it).userName
+            val age = MainFragmentArgs.fromBundle(it).userAge
+        }
+
     }
 
     override fun onCreateView(

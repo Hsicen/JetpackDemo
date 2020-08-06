@@ -45,10 +45,10 @@ class MainFragment : Fragment() {
 
         //方法1
         btn_to_second.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("name", "Mike")
-            bundle.putBoolean("on", true)
-            bundle.putInt("age", 23)
+            val bundle = MainFragmentArgs.Builder()
+                .setUserName("晓明")
+                .setUserAge(19)
+                .build().toBundle()
 
             val navOptions = NavOptions.Builder()
                 .setEnterAnim(R.anim.fragment_fade_enter)
