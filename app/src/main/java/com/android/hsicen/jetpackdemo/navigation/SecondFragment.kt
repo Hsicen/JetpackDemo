@@ -1,9 +1,7 @@
 package com.android.hsicen.jetpackdemo.navigation
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.android.hsicen.jetpackdemo.R
 
@@ -47,6 +45,13 @@ class SecondFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        //清除菜单选项
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     companion object {
