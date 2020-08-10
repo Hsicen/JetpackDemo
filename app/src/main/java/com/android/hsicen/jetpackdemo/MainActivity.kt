@@ -1,9 +1,16 @@
 package com.android.hsicen.jetpackdemo
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -46,5 +53,46 @@ class MainActivity : AppCompatActivity() {
 
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    /*** 发送通知*/
+    private fun sendNotification() {
+        val manager = NotificationManagerCompat.from(this)
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val notificationChannel = NotificationChannel(CHANNEL_ID, "通知", importance)
+            notificationChannel.description = "重要通知"
+            manager.createNotificationChannel(notificationChannel)
+        }
+
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentText("DeepLink Demo")
+            .setContentTitle("DeepLink Demo")
+            .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(getPendIntent())
+            .setAutoCancel(true)
+            .build()
+
+
+        manager.notify(1, notification)
+    }
+
+    private fun getPendIntent(): PendingIntent {
+        val bundle = Bundle()
+        bundle.putString("params", "Hello hsicen")
+
+        return Navigation.findNavController(this, R.id.btn_to_second)
+            .createDeepLink()
+            .setGraph(R.navigation.nav_graph)
+            .setDestination(R.id.secondFragment) //nav_graph中的目的fragment
+            .setArguments(bundle)
+            .createPendingIntent()
+    }
+
+    companion object {
+        const val CHANNEL_ID = "231"
     }
 }
