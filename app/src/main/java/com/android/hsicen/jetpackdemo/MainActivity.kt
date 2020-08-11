@@ -1,6 +1,7 @@
 package com.android.hsicen.jetpackdemo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             //页面切换回调监听
-
+            Log.d("hsc", "$controller; $destination;  $arguments")
         }
     }
 

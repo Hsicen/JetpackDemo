@@ -8,16 +8,12 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.android.hsicen.jetpackdemo.navigation.MainFragment"
-        android:label="fragment_main"
+        android:label="Jetpack组件"
         tools:layout="@layout/fragment_main">
 
         <action
             android:id="@+id/action_mainFragment_to_livedataFragment"
-            app:destination="@id/livedataFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/livedataFragment" />
 
         <action
             android:id="@+id/action_mainFragment_to_lifecycleFragment"
@@ -36,24 +32,25 @@
     <fragment
         android:id="@+id/livedataFragment"
         android:name="com.android.hsicen.jetpackdemo.navigation.LiveDataFragment"
-        android:label="fragment_second"
+        android:label="LiveData"
         tools:layout="@layout/fragment_second" />
 
     <fragment
         android:id="@+id/lifecycleFragment"
         android:name="com.android.hsicen.jetpackdemo.navigation.LifecycleFragment"
-        android:label="fragment_lifecycle"
+        android:label="Lifecycle"
         tools:layout="@layout/fragment_lifecycle" />
 
     <fragment
         android:id="@+id/viewModelFragment"
         android:name="com.android.hsicen.jetpackdemo.navigation.ViewModelFragment"
-        android:label="fragment_view_model"
+        android:label="ViewModel"
         tools:layout="@layout/fragment_view_model" />
+
     <fragment
         android:id="@+id/navigationFragment"
         android:name="com.android.hsicen.jetpackdemo.navigation.NavigationFragment"
-        android:label="fragment_navigation"
+        android:label="Navigation"
         tools:layout="@layout/fragment_navigation" />
 
 </navigation>
