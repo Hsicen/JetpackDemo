@@ -1,12 +1,11 @@
 package com.android.hsicen.jetpackdemo.navigation
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.android.hsicen.jetpackdemo.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
