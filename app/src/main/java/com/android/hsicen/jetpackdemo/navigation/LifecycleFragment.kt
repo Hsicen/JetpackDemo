@@ -1,11 +1,14 @@
 package com.android.hsicen.jetpackdemo.navigation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.android.hsicen.jetpackdemo.R
+import com.android.hsicen.jetpackdemo.lifecycle.LifecycleActivity
+import kotlinx.android.synthetic.main.fragment_lifecycle.*
 
 
 /**
@@ -29,8 +32,15 @@ class LifecycleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lifecycle, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btn_lifecycle_1.setOnClickListener {
+            startActivity(Intent(activity, LifecycleActivity::class.java))
+        }
     }
 
     companion object {

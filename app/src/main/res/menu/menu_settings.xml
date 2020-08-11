@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/livedataFragment"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="跳转SecondFragment" />
+        android:title="设置"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/viewModelFragment"
+        android:title="分享"
+        app:showAsAction="always" />
 
 </menu>
