@@ -3,15 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation.LiveDataFragment">
+    tools:context=".navigation.ViewModelFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="This is Second Fragment"
-        android:textColor="@color/colorPrimary"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

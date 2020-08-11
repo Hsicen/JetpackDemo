@@ -10,33 +10,50 @@
         android:name="com.android.hsicen.jetpackdemo.navigation.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
+
         <action
-            android:id="@+id/action_mainFragment_to_secondFragment"
-            app:destination="@id/secondFragment"
+            android:id="@+id/action_mainFragment_to_livedataFragment"
+            app:destination="@id/livedataFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
-        <argument
-            android:name="user_name"
-            android:defaultValue='"unkown"'
-            app:argType="string" />
+        <action
+            android:id="@+id/action_mainFragment_to_lifecycleFragment"
+            app:destination="@id/lifecycleFragment" />
 
-        <argument
-            android:name="user_age"
-            android:defaultValue="0"
-            app:argType="integer" />
+        <action
+            android:id="@+id/action_mainFragment_to_viewModelFragment"
+            app:destination="@id/viewModelFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.android.hsicen.jetpackdemo.navigation.SecondFragment"
+        android:id="@+id/livedataFragment"
+        android:name="com.android.hsicen.jetpackdemo.navigation.LiveDataFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_second" />
 
-        <deepLink app:uri="www.baidu.com/{params}" />
-    </fragment>
+    <fragment
+        android:id="@+id/lifecycleFragment"
+        android:name="com.android.hsicen.jetpackdemo.navigation.LifecycleFragment"
+        android:label="fragment_lifecycle"
+        tools:layout="@layout/fragment_lifecycle" />
+
+    <fragment
+        android:id="@+id/viewModelFragment"
+        android:name="com.android.hsicen.jetpackdemo.navigation.ViewModelFragment"
+        android:label="fragment_view_model"
+        tools:layout="@layout/fragment_view_model" />
+    <fragment
+        android:id="@+id/navigationFragment"
+        android:name="com.android.hsicen.jetpackdemo.navigation.NavigationFragment"
+        android:label="fragment_navigation"
+        tools:layout="@layout/fragment_navigation" />
 
 </navigation>

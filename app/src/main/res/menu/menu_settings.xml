@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/secondFragment"
+        android:id="@+id/livedataFragment"
         android:icon="@drawable/ic_launcher_background"
         android:title="跳转SecondFragment" />
 

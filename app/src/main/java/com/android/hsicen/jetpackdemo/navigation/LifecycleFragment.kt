@@ -5,16 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import com.android.hsicen.jetpackdemo.R
-import kotlinx.android.synthetic.main.fragment_main.*
+
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
+ * Use the [LifecycleFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainFragment : Fragment() {
+class LifecycleFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -30,31 +29,8 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        btn_to_lifecycle.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_mainFragment_to_lifecycleFragment)
-        }
-
-        btn_to_navigation.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_mainFragment_to_navigationFragment)
-        }
-
-        btn_to_viewmodel.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_mainFragment_to_viewModelFragment)
-        }
-
-        btn_to_livedata.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_mainFragment_to_livedataFragment)
-        }
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_lifecycle, container, false)
     }
 
     companion object {
@@ -63,7 +39,7 @@ class MainFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
+            LifecycleFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
