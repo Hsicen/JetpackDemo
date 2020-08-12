@@ -1,10 +1,13 @@
 package com.android.hsicen.jetpackdemo.navigation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.android.hsicen.jetpackdemo.R
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -17,6 +20,10 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+
+    private val mViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(ShareViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,24 +44,36 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_to_lifecycle.setOnClickListener {
+            mViewModel.changeStr("click to lifecycle")
+
             Navigation.findNavController(it)
                 .navigate(R.id.action_mainFragment_to_lifecycleFragment)
         }
 
         btn_to_navigation.setOnClickListener {
+            mViewModel.changeStr("click to navigation")
+
             Navigation.findNavController(it)
                 .navigate(R.id.action_mainFragment_to_navigationFragment)
         }
 
         btn_to_viewmodel.setOnClickListener {
+            mViewModel.changeStr("click to viewmodel")
+
             Navigation.findNavController(it)
                 .navigate(R.id.action_mainFragment_to_viewModelFragment)
         }
 
         btn_to_livedata.setOnClickListener {
+            mViewModel.changeStr("click to livedata")
+
             Navigation.findNavController(it)
                 .navigate(R.id.action_mainFragment_to_livedataFragment)
         }
+
+        mViewModel.mShareStr.observe(viewLifecycleOwner, Observer {
+            Log.d("hsc", "MainFragment: $it")
+        })
     }
 
     companion object {

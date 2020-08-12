@@ -1,10 +1,13 @@
 package com.android.hsicen.jetpackdemo.navigation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.android.hsicen.jetpackdemo.R
 
 /**
@@ -15,6 +18,10 @@ import com.android.hsicen.jetpackdemo.R
 class LiveDataFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+
+    private val mViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(ShareViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +37,20 @@ class LiveDataFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mViewModel.mShareStr.observe(viewLifecycleOwner, Observer {
+            Log.d("hsc", "LiveData: $it")
+        })
+    }
+
+    override fun onDestroy() {
+        mViewModel.changeStr("back from LiveData")
+
+        super.onDestroy()
     }
 
     companion object {
